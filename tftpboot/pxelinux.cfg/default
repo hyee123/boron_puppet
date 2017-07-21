@@ -1,0 +1,12 @@
+default menu.c32
+prompt 0 
+timeout 150
+ontimeout local
+menu title ######### PXE Boot Menu #########
+label 1
+menu label ^1) Install CentOS 7 x64 over the network with Kickstart
+kernel centos7/vmlinuz
+append initrd=centos7/initrd.img inst.ks=ftp://ftp:ftp@192.168.95.1/pub/anaconda-ks.cfg inst.cmdline inst.grt
+label local
+menu label ^2) default local boot
+localboot 0

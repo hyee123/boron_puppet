@@ -1,0 +1,25 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.59.1 boroni
+192.168.95.1 eboroni e1
+192.168.95.2 eboron2 e2
+192.168.95.3 eboron3 e3
+192.168.95.4 eboron4 e4
+192.168.95.5 eboron5 e5
+192.168.95.6 eboron6 e6
+192.168.95.7 eboron7 e7
+192.168.95.8 eboron8 e8
+192.168.95.9 eboron9 e9
+192.168.95.10 eboron10 e10
+192.168.95.11 eboron11 e11
+192.168.127.1 boron1 h1
+192.168.127.2 boron2 h2
+192.168.127.3 boron3 h3
+192.168.127.4 boron4 h4
+192.168.127.5 boron5 h5
+192.168.127.6 boron6 h6
+192.168.127.7 boron7 h7
+192.168.127.8 boron8 h8
+192.168.127.9 boron9 h9
+192.168.127.10 boron10 h10
+192.168.127.11 boron11 h11
