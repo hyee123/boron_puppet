@@ -1,0 +1,2 @@
+/home 	192.168.127.0/255.255.255.0(rw,sync,no_root_squash)
+
