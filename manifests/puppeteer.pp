@@ -173,7 +173,8 @@ package { $packages:
 }
 
 exec {'dockerInstall':
-   command => bash /root/boron_puppet/scripts/dockerInstallScript.sh,
+   command => "bash /root/boron_puppet/scripts/dockerInstallScript.sh",
+   unless => "test -e /usr/bin/docker",
 }
 
 package {'docker-ce':
@@ -181,16 +182,17 @@ package {'docker-ce':
 }
 
 exec {'kubeInstall':
-   command => bash /root/boron_puppet/scripts/kubeInstallScript.sh,
+   command => "bash /root/boron_puppet/scripts/kubeInstallScript.sh",
+   unless => "test -e /usr/bin/kubelet && test -e /usr/bin/kubeadm",
 }
 
-$kubepackages = ['kubectl', 'kubeadm']
-package {'kubepackages':
+$kubepackages = ['kubelet', 'kubeadm']
+package {'$kubepackages':
    ensure => installed,
 }
 
 exec {'kubeSetup':
-   command => bash /root/boron_puppet/scripts/kubeMasterSetup.sh.
+   command => "bash /root/boron_puppet/scripts/kubeMasterSetup.sh",
 }
 
 
