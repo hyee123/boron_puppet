@@ -167,7 +167,7 @@ file { '/etc/dhcp/dhcpd.conf':
    source => "/root/boron_puppet/etc/dhcp/dhcpd.conf",
 }
 
-$packages = ['ntp', 'mpi', 'slurm', 'munge', 'nfs', 'sudo']
+$packages = ['ntp', 'mpi', 'slurm', 'munge', 'nfs', 'sudo', 'docker-ce', 'kubectl', 'kubeadm', 'yum-utils', 'device-mapper-persistent-data', 'lvm2']
 package { $packages:
    ensure => installed,
 }
