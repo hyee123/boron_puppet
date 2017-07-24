@@ -167,11 +167,31 @@ file { '/etc/dhcp/dhcpd.conf':
    source => "/root/boron_puppet/etc/dhcp/dhcpd.conf",
 }
 
-$packages = ['ntp', 'mpi', 'slurm', 'munge', 'nfs', 'sudo', 'docker-ce', 'kubectl', 'kubeadm', 'yum-utils', 'device-mapper-persistent-data', 'lvm2']
+$packages = ['ntp', 'mpi', 'slurm', 'munge', 'nfs', 'sudo', 'yum-utils', 'device-mapper-persistent-data', 'lvm2']
 package { $packages:
    ensure => installed,
 }
 
+exec {'dockerInstall':
+   command => bash /root/boron_puppet/scripts/dockerInstallScript.sh,
+}
+
+package {'docker-ce':
+   ensure => installed,
+}
+
+exec {'kubeInstall':
+   command => bash /root/boron_puppet/scripts/kubeInstallScript.sh,
+}
+
+$kubepackages = ['kubectl', 'kubeadm']
+package {'kubepackages':
+   ensure => installed,
+}
+
+exec {'kubeSetup':
+   command => bash /root/boron_puppet/scripts/kubeMasterSetup.sh.
+}
 
 
 }
