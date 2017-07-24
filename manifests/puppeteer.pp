@@ -167,14 +167,14 @@ file { '/etc/dhcp/dhcpd.conf':
    source => "/root/boron_puppet/etc/dhcp/dhcpd.conf",
 }
 
-$packages = ['ntp', 'mpi', 'slurm', 'munge', 'nfs', 'sudo', 'yum-utils', 'device-mapper-persistent-data', 'lvm2']
+$packages = ['ntp', 'openmpi', 'openmpi-devel', 'slurm', 'munge', 'nfs-utils', 'nfs-utils-lib', 'sudo', 'yum-utils', 'device-mapper-persistent-data', 'lvm2']
 package { $packages:
    ensure => installed,
 }
 
 exec {'dockerInstall':
-   command => "bash /root/boron_puppet/scripts/dockerInstallScript.sh",
-   unless => "test -e /usr/bin/docker",
+   command => "/root/boron_puppet/scripts/dockerInstallScript.sh",
+   #unless => 'test -e /usr/bin/docker',
 }
 
 package {'docker-ce':
@@ -182,17 +182,17 @@ package {'docker-ce':
 }
 
 exec {'kubeInstall':
-   command => "bash /root/boron_puppet/scripts/kubeInstallScript.sh",
-   unless => "test -e /usr/bin/kubelet && test -e /usr/bin/kubeadm",
+   command => "/root/boron_puppet/scripts/kubeInstallScript.sh",
+   #unless => 'test -e /usr/bin/kubelet && test -e /usr/bin/kubeadm',
 }
 
 $kubepackages = ['kubelet', 'kubeadm']
-package {'$kubepackages':
+package { $kubepackages:
    ensure => installed,
 }
 
 exec {'kubeSetup':
-   command => "bash /root/boron_puppet/scripts/kubeMasterSetup.sh",
+   command => "/root/boron_puppet/scripts/kubeMasterSetup.sh",
 }
 
 
