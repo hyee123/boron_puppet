@@ -167,7 +167,7 @@ file { '/etc/dhcp/dhcpd.conf':
    source => "/root/boron_puppet/etc/dhcp/dhcpd.conf",
 }
 
-$packages = ['ntp', 'openmpi', 'openmpi-devel', 'slurm', 'munge', 'nfs-utils', 'nfs-utils-lib', 'sudo', 'yum-utils', 'device-mapper-persistent-data', 'lvm2']
+$packages = ['ntp', 'openmpi', 'openmpi-devel', 'slurm', 'munge', 'nfs-utils', 'sudo', 'yum-utils', 'device-mapper-persistent-data', 'lvm2']
 package { $packages:
    ensure => installed,
 }
