@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  # Unique key of the Deployment instance
+  name: mpi-worker
+spec:
+  # 3 Pods should exist at all times.
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        # Apply this label to pods and default
+        # the Deployment label selector to this value
+        app: mpi-worker
+    spec:
+      volumes:
+        name: ssh-keys
+        secret:
+          secretName: ssh-key-secret
+      containers:
+      - name: kube-mpi
+        # Run this image
+        image: javawolfpack/base-centos-mpi
+        volumeMounts:
+          - name: ssh-keys
+            readOnly: true
+mountPath: /home/mpi/.ssh/
